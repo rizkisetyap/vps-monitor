@@ -64,12 +64,13 @@ export async function POST(req: NextRequest) {
 
   const token = await createSessionToken(username);
   const res = NextResponse.json({ ok: true });
-  res.cookies.set(SESSION_COOKIE_NAME, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: SESSION_TTL_SECONDS
-  });
+      const isSecure = req.nextUrl.protocol === "https:" || req.headers.get("x-forwarded-proto") === "https";
+      res.cookies.set(SESSION_COOKIE_NAME, token, {
+        httpOnly: true,
+        secure: isSecure,
+        sameSite: "lax",
+        path: "/",
+        maxAge: SESSION_TTL_SECONDS
+      });
   return res;
 }

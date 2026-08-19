@@ -35,8 +35,7 @@ function LoginForm() {
         return;
       }
       const next = searchParams.get("next") || "/dashboard";
-      router.replace(next);
-      router.refresh();
+      window.location.href = next;
     } catch {
       setError("Could not reach the server");
     } finally {
