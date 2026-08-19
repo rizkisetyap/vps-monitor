@@ -173,6 +173,13 @@ a:focus-visible {
   gap: 12px;
 }
 
+@media (max-width: 768px) {
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
