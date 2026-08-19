@@ -10,6 +10,7 @@ import { SystemSnapshot } from "@/lib/system";
 import { Pm2Process } from "@/lib/pm2";
 import { NginxStatus } from "@/lib/nginx";
 import { formatBytes, formatUptimeSeconds } from "@/lib/format";
+import LogViewer from "@/components/LogViewer";
 
 const POLL_MS = 4000;
 const HISTORY_LENGTH = 24;
